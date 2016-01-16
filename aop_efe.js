@@ -1,4 +1,5 @@
 // AOP 编程使用继承的方式实现
+'use strict'
 
 class Component {
   constructor() {
