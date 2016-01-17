@@ -20,7 +20,7 @@ var b = Singleton.getInstance('ins b');
 a.getName();
 b.getName();
 
-console.log(a.instance);
+console.log(a.instance);            // null
 console.log(Singleton.instance);
 
 console.log(a === b);
