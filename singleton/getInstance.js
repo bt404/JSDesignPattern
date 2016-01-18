@@ -1,3 +1,7 @@
+/* 
+ * 通过类方法的模式实现单例，本身就是一种惰性单例
+ */
+
 var Singleton = function(name) {
     this.name = name;
     //this.instance = null; // 没有实际意义
