@@ -1,6 +1,6 @@
 var Singleton = function(name) {
     this.name = name;
-    this.instance = null;
+    //this.instance = null; // 没有实际意义
 };
 
 Singleton.prototype.getName = function() {
@@ -8,7 +8,7 @@ Singleton.prototype.getName = function() {
 };
 
 Singleton.getInstance = function(name) {
-    if (!this.instance) {
+    if (!this.instance) {// 实际的单例是绑定在Singleton上的
         this.instance = new Singleton(name);
     }
     return this.instance;
