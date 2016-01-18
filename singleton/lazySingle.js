@@ -1,3 +1,7 @@
+/* 和getInstance()的本质不同是将创建单例对象的过程分离
+ * getSingleFactory()更像一个生产单例函数的工厂
+ */
+
 var getSingleFactory = function(fn) {
   var result = null;
   return function() {
