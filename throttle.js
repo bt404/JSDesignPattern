@@ -22,8 +22,5 @@ var throttle = function(fn, interval) {
     };
 };
 
-for (var i = 0; i < 1000; ++i) {
-    throttle(function(){
-        console.log(1);
-    }, 1000);
-}
+var foo = throttle(function(){console.log(arguments[0]);}, 10);
+
