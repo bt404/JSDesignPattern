@@ -17,17 +17,21 @@ var Iterator = function (obj) {
     return obj[current];
   };
 
+  var reset = function () {
+    current = 0;
+  };
+
   return {
     isDone: isDone,
     next: next,
-    getCurrent: getCurrent
+    getCurrent: getCurrent,
+    reset: reset,
   };
 };
 
 var iterator1 = Iterator([1, 2, 3]);
 var iterator2 = Iterator([1, 3, 3]);
 var iterator3 = Iterator([1, 3, 3]);
-var iterator4 = Iterator([1, 3, 3]);
 
 var compare = function (iteratorA, iteratorB) {
   while (!iteratorA.isDone() || !iteratorB.isDone()) {
@@ -42,4 +46,5 @@ var compare = function (iteratorA, iteratorB) {
 };
 
 compare(iterator1, iterator2);
-compare(iterator3, iterator4);
+iterator2.reset();
+compare(iterator2, iterator3);
