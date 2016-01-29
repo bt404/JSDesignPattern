@@ -1,4 +1,4 @@
-var curring = (function(fn) {
+var curring = function(fn) {
     var args = [];
 
     return function() {
@@ -9,7 +9,7 @@ var curring = (function(fn) {
             //return arguments.callee;
         }
     }
-});
+};
 
 var cost = (function() {
     var money = 0;
