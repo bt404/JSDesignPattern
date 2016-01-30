@@ -1,5 +1,10 @@
-var setCommand = function (receiver, func) {
-  receiver.onclick = func;
+/*
+ * 命令模式function实现
+ */
+
+
+var setCommand = function (button, func) {
+  button.onclick = func;
 };
 
 var MenuBar = {
