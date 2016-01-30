@@ -1,3 +1,8 @@
+/*
+ * 命令模式的面向对象实现
+ */
+
+
 var Tv = {
     open: function() {
         console.log('open tv');
@@ -8,26 +13,26 @@ var Tv = {
 };
 
 var createCommand = function(receiver) {
-    var open = function() {
+    var execute = function() {
         return receiver.open();
     };
     
-    var close = function() {
+    var undo = function() {
         return receiver.close();
     };
 
     return {
-        open: open,
-        close: close
+        execute: execute,
+        undo: undo
     }
 };
 
 var setCommand = function(command) {
     document.getElementById('open').onclick = function() {
-        command.open();
+        command.execute();
     }
     document.getElementById('close').onclick = function() {
-        command.close();
+        command.undo();
     }
 };
 
