@@ -11,3 +11,4 @@ JavaScript设计模式测试代码
 |迭代器模式|iterator|
 |观察者模式|pubsub|
 |命令模式|command|
+|组合模式|composite|
