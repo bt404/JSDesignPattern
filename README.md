@@ -12,3 +12,4 @@ JavaScript设计模式测试代码
 |观察者模式|pubsub|
 |命令模式|command|
 |组合模式|composite|
+|模板方法模式|template|
