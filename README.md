@@ -13,3 +13,4 @@ JavaScript设计模式测试代码
 |命令模式|command|
 |组合模式|composite|
 |模板方法模式|template|
+|享元模式|flyweight|
