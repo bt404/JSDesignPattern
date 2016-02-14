@@ -14,3 +14,4 @@ JavaScript设计模式测试代码
 |组合模式|composite|
 |模板方法模式|template|
 |享元模式|flyweight|
+|装饰者模式|decorator|
