@@ -15,3 +15,4 @@ JavaScript设计模式测试代码
 |模板方法模式|template|
 |享元模式|flyweight|
 |装饰者模式|decorator|
+|中介者模式|mediator|
