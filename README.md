@@ -6,6 +6,7 @@ JavaScript设计模式测试代码
 |Pattern Name|Directory|
 |---|---|
 |[JS基础]|basic|
+|[常用算法]|algorithm|
 |单例模式|singleton|
 |代理模式|proxy|
 |迭代器模式|iterator|
