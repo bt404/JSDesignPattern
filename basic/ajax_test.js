@@ -4,7 +4,7 @@ function Ajax (type, url, data, success, fail) {
   if (window.XMLHttpRequest) {
     xhr = new XMLHttpRequest();
   } else {
-    xhr = new ActiveXObject();
+    xhr = new ActiveXObject('Microsoft.XMLHTTP);
   }
 
   type = type.toUpperCase();
