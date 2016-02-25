@@ -21,7 +21,7 @@ function maxHeapify (data, i, length) {
 }
 
 function buildMaxHeap (data) {
-  let last = data.length / 2 - 1;
+  let last = Math.floor(data.length / 2 - 1);
   for ( ; last >= 0; last--) {
     maxHeapify(data, last, data.length);
   }
