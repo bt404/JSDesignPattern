@@ -1,11 +1,11 @@
 'use strict';
 
 /*
- * 实现 jQuery 的 extend 函数
+ * 实现深拷贝
  */
 
 function isArray (obj) {
-  return Array.isArray(obj);
+  return Object.prototype.toString.call(obj) === '[object Array]';
 }
 
 function isObject (obj) {
