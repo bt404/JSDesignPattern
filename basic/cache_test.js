@@ -1,9 +1,9 @@
 'use strict';
 
 
-var set = (function () {
+var cache = (function () {
   var cache = [], length = 3;
-  return function () {
+  var set = function () {
     let key = Array.prototype.shift.apply(arguments);
     let value = Array.prototype.shift.apply(arguments);
     for (let i = 0; i < cache.length; i++) {
@@ -25,11 +25,32 @@ var set = (function () {
     }
 
     console.log(cache);
+  };
+
+  var get = function () {
+    let key = Array.prototype.shift.apply(arguments);
+    let result = undefined;
+    for (let i = 0; i < cache.length; i++) {
+      let item = cache[i];
+      if (item.hasOwnProperty(key)) {
+        result = item[key];
+        break;
+      }
+    }
+    return result;
+  };
+
+  return {
+    set: set,
+    get: get,
   }
 })();
 
 
-set('a', 1);
-set('b', 2);
-set('c', 3);
-set('b', 4);
+cache.set('a', 1);
+cache.set('b', 2);
+cache.set('c', 3);
+cache.set('b', -2);
+cache.set('d', 4);
+console.log(cache.get('b'));
+console.log(cache.get('a'));
