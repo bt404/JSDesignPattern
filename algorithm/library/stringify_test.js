@@ -49,10 +49,6 @@ function stringify (obj) {
         } else {
           ret += '"' + obj[key].toString() + '"';
         }
-      } else if (obj[key] === null) {
-        ret += 'null';
-      } else if (obj[key] === undefined) {
-        ret += 'undefined';
       } else {
         ret += stringify(obj[key]);
       }
