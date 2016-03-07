@@ -15,16 +15,24 @@ function isObject (obj) {
 function stringify (obj) {
   let ret = '';
 
-  if (!isObject(obj) && !isArray(obj)) {
+  if (!isObject(obj) && !isArray(obj) && obj !== null && obj !== undefined) {
     return obj.toString();
+  } else if (obj === null) {
+    return 'null';
+  } else if (obj === undefined) {
+    return 'undefined';
   } else if (isObject(obj)) {
     ret += '{';
     let keys = Object.keys(obj);
     for (let i = 0; i < keys.length; i++) {
       let key = keys[i];
       ret += '"' + key.toString() + '":';
-      if (!isObject(obj[key]) && !isArray(obj[key])) {
+      if (!isObject(obj[key]) && !isArray(obj[key]) && obj[key] !== null && obj[key] !== undefined) {
         ret += obj[key].toString();
+      } else if (obj[key] === null) {
+        ret += 'null';
+      } else if (obj[key] === undefined) {
+        ret += 'undefined';
       } else {
         ret += stringify(obj[key]);
       }
@@ -46,7 +54,7 @@ function stringify (obj) {
   return ret;
 }
 
-let json = {'outter': {'inner': [1, 2, {'item': 3}]}};
+let json = {'outter': {'inner': [1, 2, {'item': 3, 'special': null}]}};
 
 let result = stringify(json);
 
