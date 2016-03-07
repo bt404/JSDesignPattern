@@ -12,23 +12,43 @@ function isObject (obj) {
   return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
+function isString (obj) {
+  return Object.prototype.toString.call(obj) === '[object String]';
+}
+
+function isNull (obj) {
+  return obj === null;
+}
+
 function stringify (obj) {
   let ret = '';
 
-  if (!isObject(obj) && !isArray(obj) && obj !== null && obj !== undefined) {
-    return obj.toString();
-  } else if (obj === null) {
-    return 'null';
-  } else if (obj === undefined) {
-    return 'undefined';
+  if (!isObject(obj) && !isArray(obj)) {
+    if (!isString(obj)) {
+      if (!isNull(obj)) {
+        return obj.toString();
+      } else {
+        return 'null';
+      }
+    } else {
+      return '"' + obj.toString() + '"';
+    }
   } else if (isObject(obj)) {
     ret += '{';
     let keys = Object.keys(obj);
     for (let i = 0; i < keys.length; i++) {
       let key = keys[i];
       ret += '"' + key.toString() + '":';
-      if (!isObject(obj[key]) && !isArray(obj[key]) && obj[key] !== null && obj[key] !== undefined) {
-        ret += obj[key].toString();
+      if (!isObject(obj[key]) && !isArray(obj[key])) {
+        if (!isString(obj[key])) {
+          if (!isNull(obj[key])) {
+            ret += obj[key].toString();
+          } else {
+            ret += 'null';
+          }
+        } else {
+          ret += '"' + obj[key].toString() + '"';
+        }
       } else if (obj[key] === null) {
         ret += 'null';
       } else if (obj[key] === undefined) {
@@ -54,7 +74,7 @@ function stringify (obj) {
   return ret;
 }
 
-let json = {'outter': {'inner': [1, 2, {'item': 3, 'special': null}]}};
+let json = {'outter': {'inner': ["1", 2, {'item': 'content', 'null': null}]}};
 
 let result = stringify(json);
 
