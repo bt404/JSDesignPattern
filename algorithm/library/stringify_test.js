@@ -20,19 +20,23 @@ function isNull (obj) {
   return obj === null;
 }
 
+function processValue (obj) {
+  if (!isString(obj)) {
+    if (!isNull(obj)) {
+      return obj.toString();
+    } else {
+      return 'null';
+    }
+  } else {
+    return '"' + obj.toString() + '"';
+  }
+}
+
 function stringify (obj) {
   let ret = '';
 
   if (!isObject(obj) && !isArray(obj)) {
-    if (!isString(obj)) {
-      if (!isNull(obj)) {
-        return obj.toString();
-      } else {
-        return 'null';
-      }
-    } else {
-      return '"' + obj.toString() + '"';
-    }
+    return processValue(obj);
   } else if (isObject(obj)) {
     ret += '{';
     let keys = Object.keys(obj);
@@ -40,15 +44,7 @@ function stringify (obj) {
       let key = keys[i];
       ret += '"' + key.toString() + '":';
       if (!isObject(obj[key]) && !isArray(obj[key])) {
-        if (!isString(obj[key])) {
-          if (!isNull(obj[key])) {
-            ret += obj[key].toString();
-          } else {
-            ret += 'null';
-          }
-        } else {
-          ret += '"' + obj[key].toString() + '"';
-        }
+        ret += processValue(obj[key]);
       } else {
         ret += stringify(obj[key]);
       }
@@ -77,3 +73,4 @@ let result = stringify(json);
 console.log(result);
 
 console.log(JSON.parse(result));
+console.log(JSON.stringify(JSON.parse(result)));
