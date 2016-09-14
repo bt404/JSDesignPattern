@@ -3,7 +3,7 @@
  */
 
 var event = {
-  clientList: [],
+  clientList: {},
   listen: function (key, fn) {
     if (!this.clientList[key]) {
       this.clientList[key] = [];
