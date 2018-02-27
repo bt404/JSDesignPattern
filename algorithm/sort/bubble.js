@@ -1,5 +1,11 @@
 'use strict';
 
+function swap (con, i, j) {
+  let temp = con[i];
+  con[i] = con[j];
+  con[j] = temp;
+}
+
 function isArrayCheck (con) {
   if (Array.isArray) {
     return Array.isArray(con);
@@ -14,12 +20,10 @@ function bubbleDown (con) {
   }
 
   // 每趟一个大数沉底
-  for (let i = 1; i < con.length; i++) {
-    for (let j = 1; j < con.length-i+1; j++) {
-      if (con[j] < con[j-1]) {
-        let temp = con[j];
-        con[j] = con[j-1];
-        con[j-1] = temp;
+  for (let i = 0; i < con.length - 1; ++i) {
+    for (let j = 0; j < con.length - i - 1; ++j) {
+      if (con[j] > con[j + 1]) {
+        swap(con, j + 1, j);
       }
     }
   }
@@ -33,12 +37,10 @@ function bubbleUp (con) {
   }
 
   // 每趟一个小数冒泡
-  for (let i = con.length-1; i > 0; i--) {
-    for (let j = con.length-1; j > con.length-i-1; j--) {
-      if (con[j] < con[j-1]) {
-        let temp = con[j];
-        con[j] = con[j-1];
-        con[j-1] = temp;
+  for (let i = con.length - 1; i > 0; --i) {
+    for (let j = con.length - 1; j > con.length - i - 1; --j) {
+      if (con[j - 1] > con[j]) {
+        swap(con, j - 1, j);
       }
     }
   }
