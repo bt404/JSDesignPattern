@@ -4,7 +4,7 @@ function isArrayCheck (con) {
   if (Array.isArray) {
     return Array.isArray(con);
   } else {
-    Object.prototype.toString.call(con) !== '[object Array]';
+    return Object.prototype.toString.call(con) === '[object Array]';
   }
 }
 
