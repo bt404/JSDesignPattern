@@ -13,20 +13,28 @@ function isObject (obj) {
 }
 
 
-function extend (A, B) {
-  for (let key in B) {
-    if (!isObject(B[key])) {
-      A[key] = B[key];
-    } else {
-      A[key] = {};
-      extend(A[key], B[key]);
+function deepClone (obj) {
+  let ret;
+  if (isObject(obj)) {
+    ret = {};
+    for (let key in obj) {
+      ret[key] = deepClone(obj[key]);
     }
+  } else if (isArray(obj)) {
+    ret = [];
+    for (let i = 0; i < obj.length; ++i) {
+      ret[i] = deepClone(obj[i]);
+    }
+  } else {
+    ret = obj;
   }
+  return ret;
 }
 
-let dest = {};
-let src = {a: {b: 1}, c: 3};
+//let src = {a: {b: 1}, c: 3};
+let src = {a: {b: [1, 2]}, c: 3};
 
-extend(dest, src);
+let dest = deepClone(src);
 
 console.log(dest);
+console.log(dest.a.b === src.a.b);
