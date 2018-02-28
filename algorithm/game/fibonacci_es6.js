@@ -4,8 +4,8 @@ function *fibonacci () {
   let [prev, curr] = [0, 1];
 
   for (;;) {
-    [prev, curr] = [curr, prev + curr];
     yield curr;
+    [prev, curr] = [curr, prev + curr];
   }
 }
 
