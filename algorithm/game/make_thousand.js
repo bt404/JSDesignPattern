@@ -22,7 +22,7 @@ let makeThousands2nd = data => {
         for (; i >= 3; i -= 3) {
             ret.push(temp.substr(i - 3, 3));
         }
-        if (i >= 0) {
+        if (i > 0) {
             ret.push(temp.substr(0, i));
         }
         items[0] = ret.reverse().join(',');
