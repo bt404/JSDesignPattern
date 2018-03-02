@@ -1,5 +1,5 @@
 let makeThousands = data => {
-    if (Number(data)) {
+    if (typeof(data) === 'number') {
         let symbol = Number(data) < 0 ? '-' : '';
         data = Math.abs(Number(data));
         let items = data.toString().split('.');
@@ -16,7 +16,7 @@ let makeThousands = data => {
 };
 
 let makeThousands2nd = data => {
-    if (Number(data)) {
+    if (typeof(data) === 'number') {
         let symbol = Number(data) < 0 ? '-' : '';
         data = Math.abs(Number(data));
         let items = data.toString().split('.');
