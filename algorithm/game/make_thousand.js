@@ -13,6 +13,28 @@ let makeThousands = data => {
     }
 };
 
+let makeThousands2nd = data => {
+    if (Number(data)) {
+        let items = data.toString().split('.');
+        let temp = items[0];
+        let i = temp.length;
+        let ret = [];
+        for (; i >= 3; i -= 3) {
+            ret.push(temp.substr(i - 3, 3));
+        }
+        if (i >= 0) {
+            ret.push(temp.substr(0, i));
+        }
+        items[0] = ret.reverse().join(',');
+        return items.join('.');
+    }
+};
+
 console.log(makeThousands(-1234256789));
+console.log(makeThousands2nd(-1234256789));
+
+console.log('');
+
 console.log(makeThousands(-1234256.789));
+console.log(makeThousands2nd(-1234256.789));
 
