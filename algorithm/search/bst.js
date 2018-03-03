@@ -167,6 +167,7 @@ let bst = (function () {
     if (node.left) {
       inOrder(node.left);
     }
+    console.log(node.value);
     if (node.right) {
       inOrder(node.right);
     }
@@ -176,10 +177,14 @@ let bst = (function () {
     return rootNode;
   }
 
+  function tranverse () {
+    inOrder(rootNode);
+  }
+
   return {
     insert,
     getRoot,
-    inOrder,
+    tranverse,
   };
 })();
 
@@ -193,4 +198,4 @@ bst.insert(5);
 bst.insert(8);
 bst.insert(7);
 
-bst.inOrder(bst.getRoot());
+bst.tranverse();
