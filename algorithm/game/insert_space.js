@@ -5,10 +5,6 @@ function spit (str) {
   for (; i < str.length; i += 4) {
     ret.push(str.substr(i, 4));
   }
-  if (i < str.length - 1) {
-    ret.push(str.substr(i));
-  }
-
   return ret.join(' ');
 }
 
