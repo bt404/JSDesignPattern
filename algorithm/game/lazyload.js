@@ -5,7 +5,7 @@ var lazyload = (function () {
   function debounce () {}
 
   function init () {
-    for (let item of Array.from(document.getElementsByClassName('.lazy'))) {
+    for (let item of Array.from(document.getElementsByClassName('lazy'))) {
       items.push({
         el: item,
         y: getPosition(item);
@@ -51,6 +51,10 @@ var lazyload = (function () {
     for (let item of items) {
       checkInViewport(item);
     }
+  }
+
+  return {
+    init
   }
 
 })();
