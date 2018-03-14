@@ -1,7 +1,7 @@
 /*
   找到一个数组中最大子数组和
  */
-function findGreatestSub (con) {
+function findGreatestSum (con) {
   let temp = [];
   for (let i = 0; i < con.length; ++i) {
     temp[i] = con[i];
