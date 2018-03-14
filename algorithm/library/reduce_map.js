@@ -1,3 +1,6 @@
+/*
+  使用 reduce 实现 map 函数
+ */
 Array.prototype.map = function (fn) {
   let ret = [];
   this.reduce((prev, cur) => {
