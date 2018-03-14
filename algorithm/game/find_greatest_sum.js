@@ -23,4 +23,4 @@ function findGreatestSum (con) {
 
 let con = [1, 4, -3, 5, -1, 6, 2, -5];
 
-console.log(findGreatestSub(con));
+console.log(findGreatestSum(con));
