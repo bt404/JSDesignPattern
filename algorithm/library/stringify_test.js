@@ -43,11 +43,11 @@ function stringify (obj) {
     for (let i = 0; i < keys.length; i++) {
       let key = keys[i];
       ret += '"' + key.toString() + '":';
-      if (!isObject(obj[key]) && !isArray(obj[key])) {
-        ret += processValue(obj[key]);
-      } else {
-        ret += stringify(obj[key]);
-      }
+      // if (!isObject(obj[key]) && !isArray(obj[key])) {
+      //   ret += processValue(obj[key]);
+      // } else {
+      ret += stringify(obj[key]);
+      // }
       if (i != keys.length - 1) {
         ret += ',';
       }
