@@ -46,6 +46,47 @@ var cache = (function () {
   }
 })();
 
+const MAX_SIZE = 3;
+
+class Cache {
+  constructor(max_size) {
+    this.max_size = max_size || MAX_SIZE;
+    this.cache = [];
+  }
+
+  get (key) {
+    let result = undefined;
+    for (let item of this.cache) {
+      if (item.hasOwnProperty(key)) {
+        result = item[key];
+      }
+    }
+    return result;
+  }
+
+  set (key, value) {
+    for (let i = 0; i < this.cache.length; ++i) {
+      let item = this.cache[i];
+      if (item.hasOwnProperty(key)) {
+        item[key] = value;
+        this.cache.splice(i, 1);
+        this.cache.splice(0, 0, item);
+        console.log(this.cache);
+        return;
+      }
+    }
+
+    let temp = {};
+    temp[key] = value;
+    this.cache.unshift(temp);
+    if (this.cache.length > MAX_SIZE) {
+      this.cache.pop();
+    }
+    console.log(this.cache);
+  }
+}
+
+cache = new Cache();
 
 cache.set('a', 1);
 cache.set('b', 2);
