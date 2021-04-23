@@ -4,21 +4,29 @@
  * stringify函数实现
  */
 
-function isArray (obj) {
-  return Array.isArray(obj);
+function typeFactory (typeStr) {
+  return function (obj) {
+    return Object.prototype.toString.call(obj) === `[object ${typeStr}]`;
+  };
 }
 
-function isObject (obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
-}
+let [isArray, isObject, isString, isNull] = ['Array', 'Object', 'String', 'Null'].map(typeFactory);
 
-function isString (obj) {
-  return Object.prototype.toString.call(obj) === '[object String]';
-}
+// function isArray (obj) {
+//   return Array.isArray(obj);
+// }
 
-function isNull (obj) {
-  return obj === null;
-}
+// function isObject (obj) {
+//   return Object.prototype.toString.call(obj) === '[object Object]';
+// }
+
+// function isString (obj) {
+//   return Object.prototype.toString.call(obj) === '[object String]';
+// }
+
+// function isNull (obj) {
+//   return obj === null;
+// }
 
 function processValue (obj) {
   if (!isString(obj)) {
