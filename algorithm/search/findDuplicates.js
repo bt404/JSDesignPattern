@@ -7,11 +7,11 @@
 function findDuplicates (con) {
     let ret = [];
     for (let item of con) {
-        let temp = Math.abs(item);
-        if (con[temp-1] < 0) {
-            ret.push(temp);
+        let originItem = Math.abs(item);
+        if (con[originItem-1] < 0) {
+            ret.push(originItem);
         } else {
-            con[temp-1] *= -1;
+            con[originItem-1] *= -1;
         }
     }
     return ret;
