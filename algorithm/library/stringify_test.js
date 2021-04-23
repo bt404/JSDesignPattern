@@ -47,29 +47,16 @@ function stringify (obj) {
     return processValue(obj);
   } else if (isObject(obj)) {
     ret += '{';
-    let keys = Object.keys(obj);
-    for (let i = 0; i < keys.length; i++) {
-      let key = keys[i];
-      ret += '"' + key.toString() + '":';
-      // if (!isObject(obj[key]) && !isArray(obj[key])) {
-      //   ret += processValue(obj[key]);
-      // } else {
-      ret += stringify(obj[key]);
-      // }
-      if (i != keys.length - 1) {
-        ret += ',';
-      }
+    for (let key in obj) {
+      ret += `"${key.toString()}":${stringify(obj[key])},`;
     }
-    ret += '}';
+    ret = `${ret.substring(0, ret.length-1)}}`;
   } else if (isArray(obj)) {
     ret += '[';
-    for (let i = 0; i < obj.length; i++) {
-      ret += stringify(obj[i]);
-      if (i != obj.length - 1) {
-        ret += ',';
-      }
+    for (let item of obj) {
+      ret += `${stringify(item)},`;
     }
-    ret += ']';
+    ret = `${ret.substring(0, ret.length-1)}]`;
   }
   return ret;
 }
